@@ -1,1 +1,1 @@
-# Static-Code-Analysis-Tool-Clava-
+# Static-Code-Analysis-Tool-Clava
