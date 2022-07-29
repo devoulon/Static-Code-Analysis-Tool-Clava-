@@ -29,6 +29,8 @@ for(const $jp of Query.search("file")){
 	// for each variable which were found in the file ...
 	for( const varia of VariableStorage.getTabOfPointer()){
 
+		println(varia.getDeclaration().name)
+
 		//... display the graph, 
 		varia.display()
 
@@ -40,9 +42,10 @@ for(const $jp of Query.search("file")){
 		//Launch the analyse through the graph of the variable,
 		varia.goThroughGraph(analysers)
 
-		// display the result 
+		// initate the result 
 		analysers.result()
 	}
+	//generate a report
+	MessageGenerator.generateReport($jp.name)
 }
-
 
