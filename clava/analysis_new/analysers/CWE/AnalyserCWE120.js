@@ -1,5 +1,7 @@
 
 laraImport("clava.analysis_new.analysers.CWE.Checker.CheckerString");
+laraImport("clava.analysis_new.analysers.CWE.Checker.CheckerArray");
+
 
 class AnalyserCWE120   {
 	
@@ -9,7 +11,7 @@ class AnalyserCWE120   {
 
 	 isSizeCheck=false
 
-	 tabChecker=[this.isBufferInput,this.isSizeCheck,this.isBufferCopy]
+	  tabChecker=[this.isBuffer,this.hasCopyFunction,this.isSizeCheck]
 
 	 size =0
 	
@@ -38,7 +40,7 @@ class AnalyserCWE120   {
 		if(this.tabChecker[0] === false){
 			this.tabChecker[0]= CheckerString.isBufferInput($node)
 			if(this.tabChecker[0]===true){
-				this.size=CheckerString.getSizeArray($node)
+				this.size=CheckerArray.getSizeArray($node)
 			}
 			return this.tabChecker[0]
 		}
