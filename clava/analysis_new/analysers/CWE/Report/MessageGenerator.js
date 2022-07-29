@@ -1,36 +1,29 @@
 laraImport("lara.Io");
-laraImport("clava.analysis_new.analysers.AST.checkpoint")
+laraImport("clava.analysis_new.analysers.CWE.Report.Weakness");
 
- class MessageGenerator {
-    messages = []; 
-   
-	constructor(){
-	    }
+class MessageGenerator {
+    static messages = [];
 
-     enableFileOutput(){
-        this.fileOutputFlag = 1;
-    }
 
-     append(checkpoint) {
+
+    static append(checkpoint) {
         if (checkpoint === undefined) {
-                return;
-        } 
-        var message= ""
-        message +="\n vulnerability detected : "+checkpoint.getDesc() + " \n line : " +  checkpoint.getLine() + "\n data name : " +checkpoint.getName() +"\n";
-        println(message)   
+            return;
+        }
+        var message = ""
+        message += "\n vulnerability detected : " + checkpoint.getDesc() + " \n line : " + checkpoint.getLine() + "\n data name : " + checkpoint.getName() + "\n";
+        println(message)
         this.messages.push(message)
     }
 
-     generateReport(fileName) {
+    static generateReport(fileName) {
         var analysisFileName = Io.getPath(Clava.getData().getContextFolder(), "AnalysisReports/analysis_" + fileName + "_report.txt");
-        var message=""
+        var message = ""
         for (const $message of this.messages) {
-        	message+=$message
-            
+            message += $message
+
         }
         Io.writeFile(analysisFileName, message);
-     
-         
-    
+        this.messages = []
     }
 }
