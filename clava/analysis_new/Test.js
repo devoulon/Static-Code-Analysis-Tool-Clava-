@@ -18,10 +18,10 @@ println(Query.root().dump)
 for(const $jp of Query.search("file")){
 	
 	//initialisation a new Scanner 
-	Scanner = new ScanCode();
+	let scanner = new ScanCode();
 
 	//launch the scanner for one file 
-	Scanner.launch($jp);
+	scanner.launch($jp);
 	
 	//After that Scanne succed , Variable Storage is full
 	println(VariableStorage.getTabOfPointer())
